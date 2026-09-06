@@ -21,11 +21,12 @@ impl Handler {
         let pendulum = Pendulum::new(
             vector![0.0, 0.0],
             vector![0.0, 0.0],
-            vector![100.0, 0.0],
+            vector![0.0, 0.0],
+            vector![0.0, -1.0],
             0.0,
             0.0,
             10.0,
-            5.0,
+            0.127,
         );
 
         Handler {
@@ -54,6 +55,8 @@ impl WindowHandler for Handler {
         self.pendulum.update(dt);
         let (bob_loc, bob_rad) = self.pendulum.get_bob_drawing();
         let origin = self.pendulum.get_origin_loc();
+
+        println!("{:.2?}", self.pendulum);
 
         // draw
         g.draw_circle(
